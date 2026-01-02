@@ -4,23 +4,17 @@ def get_matrix():
 
     for i in range(3):
         while True:
-            row = input(f"Enter row {i + 1} (3 numbers): ").strip()
-            part = row.split()
-            if len(part) == 1 and part[0].isdigit() and len(part[0]) == 3:
-                row = list(part[0])
-            else:
-                row = part
+            user_input = input(f"Enter row {i + 1} (3 numbers): ")
 
+            cleaned = user_input.replace(" ", "")
 
-            if len(row) != 3:
-                print("Please enter exactly 3 numbers.")
+            if not cleaned.isdigit() or len(cleaned) != 3:
+                print("Please enter exactly 3 numbers")
                 continue
-            try:
-                row = [int(num) for num in row]
-                matrix.append(row)
-                break
-            except ValueError:
-                print("Invalid input. Please enter numbers only.")
+
+            row = [int(num) for num in cleaned]
+            matrix.append(row)
+            break
 
     return matrix
 
