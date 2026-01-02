@@ -4,7 +4,13 @@ def get_matrix():
 
     for i in range(3):
         while True:
-            row = input(f"Enter row {i + 1} (3 numbers): ").split()
+            row = input(f"Enter row {i + 1} (3 numbers): ").strip()
+            part = row.split()
+            if len(part) == 1 and part[0].isdigit() and len(part[0]) == 3:
+                row = list(part[0])
+            else:
+                row = part
+
 
             if len(row) != 3:
                 print("Please enter exactly 3 numbers.")
